@@ -1,4 +1,4 @@
-# website-classification
+# Website classification
 
 ## The problem
 Problem that we are trying to solve: binary classification of websites using neural networks. The two classes are: dangerous and safe websites.
@@ -15,14 +15,13 @@ The data that we extracted from each website was a screenshot and the site’s H
 A description of the Inception’s architecture can be found here. In order to retrain the Inception architecture, we used TensorFlow’s tutorial on how to do so. We also baked some logic into DataSupplier.py (the data in this case being images) to download both classes into a hierarchical structure like the Inception retrainer wanted. 
 Downloaded images in iPython: 
 
->>> from DataSupplier import DataSupplier
->>> cd ~
->>> ds = DataSupplier()
-
-When I tried to do this, a p2.xlarge instance reported a ClientError: An error occurred (403) when calling the HeadObject operation: Forbidden
-
->>> mkdir classifications
->>> ds.get_all_images(‘classifications’)
+```python
+from DataSupplier import DataSupplier
+cd ~
+ds = DataSupplier()
+mkdir classifications
+ds.get_all_images(‘classifications’)
+```
 
 Retrained Inception after following instructions in the aforementioned link: 
 bazel-bin/tensorflow/examples/image_retraining/retrain --image_dir ~/classifications --how_many_training_steps 16000
